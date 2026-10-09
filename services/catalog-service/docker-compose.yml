@@ -1,0 +1,25 @@
+services:
+  catalog-service:
+    build: .
+    container_name: furnimart-catalog
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg2://furnimart:furnimart123@postgres:5432/furnimart
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+    container_name: furnimart-postgres
+    environment:
+      POSTGRES_USER: furnimart
+      POSTGRES_PASSWORD: furnimart123
+      POSTGRES_DB: furnimart
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
