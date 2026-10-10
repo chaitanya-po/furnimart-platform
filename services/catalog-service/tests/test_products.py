@@ -19,9 +19,10 @@ def test_database_health():
     assert response.json()["database"] == "connected"
 
 
+
 def test_create_product():
     product = {
-        "sku": "TEST-002",
+        "sku": "TEST-CREATE-UNIQUE-001",
         "name": "Test Chair",
         "description": "Test product",
         "price": 1999,
@@ -36,10 +37,11 @@ def test_create_product():
 
     data = response.json()
 
-    assert data["sku"] == "TEST-002"
+    assert data["sku"] == product["sku"]
     assert data["name"] == "Test Chair"
     assert data["price"] == 1999
     assert data["stock_quantity"] == 10
+
 
 
 def test_get_product():
