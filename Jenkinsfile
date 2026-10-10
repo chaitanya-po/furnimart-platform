@@ -29,10 +29,13 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+         stage('Build Docker Image') {
             steps {
                 bat '''
-                    docker build -t furnimart-catalog:%BUILD_NUMBER% services\\catalog-service
+                    docker build ^
+                      -t furnimart-catalog:%BUILD_NUMBER% ^
+                      -t furnimart-catalog:latest ^
+                      services\\catalog-service
                 '''
             }
         }
