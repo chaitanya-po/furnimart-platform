@@ -19,13 +19,16 @@ pipeline {
             }
         }
 
+        
         stage('Run Tests') {
             steps {
                 bat '''
                     cd services\\catalog-service
+                    set DATABASE_URL=postgresql+psycopg2://furnimart:furnimart123@localhost:5433/furnimart
                     python -m pytest -v
                 '''
             }
         }
+
     }
 }
