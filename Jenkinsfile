@@ -1,8 +1,8 @@
+
 pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -19,16 +19,22 @@ pipeline {
             }
         }
 
-        
         stage('Run Tests') {
             steps {
                 bat '''
                     cd services\\catalog-service
-                    set DATABASE_URL=postgresql+psycopg2://furnimart:furnimart123@localhost:5433/furnimart
+                    set DATABASE_URL=postgresql+psycopg2://furnimart:furnimart123@localhost:5433/furnimart_test
                     python -m pytest -v
                 '''
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                bat '''
+                    docker build -t furnimart-catalog:%BUILD_NUMBER% services\\catalog-service
+                '''
+            }
+        }
     }
 }
