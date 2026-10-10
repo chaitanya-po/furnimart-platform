@@ -1,3 +1,4 @@
+from uuid import uuid4
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -22,7 +23,7 @@ def test_database_health():
 
 def test_create_product():
     product = {
-        "sku": "TEST-CREATE-UNIQUE-001",
+        "sku": f"TEST-{uuid4().hex[:12]}",
         "name": "Test Chair",
         "description": "Test product",
         "price": 1999,
@@ -87,7 +88,7 @@ def test_update_product():
 
 def test_delete_product():
     product = {
-        "sku": "DELETE-001",
+        "sku": f"DELETE-{uuid4().hex[:12]}",
         "name": "Product To Delete",
         "description": "Temporary product",
         "price": 999,
