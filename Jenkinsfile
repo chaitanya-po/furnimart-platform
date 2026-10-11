@@ -39,5 +39,16 @@ pipeline {
                 '''
             }
         }
+
+        stage ('Deploy to Kubernetes') {
+            steps {
+                bat '''
+                    kind load docker-image furnimart-catalog:%BUILD_NUMBER% --name workshop-cluster
+                    kubectl config use-context kind-workshop-cluster
+                    kubectl -n furnimart set image deployment/catalog-deployment catalog=furnimart-catalog:%BUILD_NUMBER%
+                    kubectl -n furnimart rollout status deployment/catalog-deployment
+                '''
+            }
+        }
     }
 }

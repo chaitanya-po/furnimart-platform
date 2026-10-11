@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalog-config
+  namespace: furnimart
+data:
+  DATABASE_URL: "postgresql+psycopg2://furnimart:furnimart123@postgres:5432/furnimart"
