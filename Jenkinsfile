@@ -43,13 +43,12 @@ pipeline {
         
         stage('Deploy to Kubernetes') {
             steps {
-                bat '''
-                    "C:\\Users\\chaitanya\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Kubernetes.kind_Microsoft.Winget.Source_8wekyb3d8bbwe\\kind.exe" load docker-image furnimart-catalog:%BUILD_NUMBER% --name workload-cluster
-                    kubectl config use-context kind-workload-cluster
-                    kubectl -n furnimart set image deployment/catalog-deployment catalog=furnimart-catalog:%BUILD_NUMBER%
-                    kubectl -n furnimart rollout status deployment/catalog-deployment --timeout=120s
-                '''
-            }
+              bat '''
+                set KUBECONFIG=C:\\Users\\chaitanya\\.kube\\config
+                kubectl config get-contexts
+                kubectl --kubeconfig="%KUBECONFIG%" get nodes
+            '''
+                }
         }
 
     }
