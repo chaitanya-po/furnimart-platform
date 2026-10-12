@@ -1,4 +1,13 @@
 services:
+  frontend:
+    build:
+      context: ../../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8081:80"
+    depends_on:
+      - catalog-service
+
   catalog-service:
     build: .
     container_name: furnimart-catalog

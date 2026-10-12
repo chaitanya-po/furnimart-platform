@@ -81,6 +81,176 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .search-box input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 10px; }
 .search-box input::placeholder { color: #9a9b91; }
 .search-box button { border: 0; background: transparent; color: var(--muted); font-size: 17px; }
+
+.shop-section {
+  padding: 28px clamp(22px, 6vw, 92px) 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 26px;
+  margin-bottom: 18px;
+}
+
+.title-stack {
+  flex: 1;
+}
+
+.section-heading h2 {
+  margin: 18px 0 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(52px, 5vw, 88px);
+  line-height: 0.95;
+  font-weight: 500;
+  letter-spacing: -.08em;
+  color: var(--ink);
+}
+
+.section-heading h2 em {
+  color: #7c8d7d;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #6e7369;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heading-dash {
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-description {
+  max-width: 330px;
+  margin: 0 0 0 auto;
+  color: #6e7369;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.shop-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.shop-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.shop-controls .cart-button {
+  flex-shrink: 0;
+  padding: 10px 14px;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-chip {
+  padding: 5px 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: #5e625b;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.category-chip.active {
+  border-color: rgba(49, 75, 59, 0.15);
+  background: #2f4738;
+  color: #fffaf0;
+}
+
+.search-box {
+  width: min(100%, 290px);
+  justify-content: flex-start;
+  padding: 10px 12px;
+  border: 1px solid #cfc9bd;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.search-box input {
+  font-size: 12px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 18px;
+  background: rgba(38, 53, 42, 0.2);
+}
+
+.status-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  padding: 24px 20px 32px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.status-panel h3 {
+  margin: 18px 0 12px;
+  color: var(--ink);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(38px, 2.8vw, 56px);
+  line-height: 1.06;
+  font-weight: 500;
+  letter-spacing: -.06em;
+}
+
+.status-panel p {
+  max-width: 760px;
+  margin: 0;
+  color: #6e7369;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.status-icon {
+  color: var(--accent);
+  font-size: 24px;
+}
+
+.error-panel .primary-button {
+  margin-top: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-width: 150px;
+  padding: 16px 22px;
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: #fffaf0;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
 .product-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 20px; }
 .product-card { min-width: 0; }
 .product-image { position: relative; isolation: isolate; height: clamp(230px, 29vw, 380px); overflow: hidden; background: #e8e0d3; }
@@ -202,7 +372,8 @@ footer > p { color: #c9d0c5; font-size: 10px; }
   .shop-toolbar { align-items: stretch; flex-direction: column; gap: 15px; }
   .category-list { gap: 5px; }
   .category-chip { padding: 8px 10px; }
-  .search-box { width: 100%; }
+  .shop-controls { width: 100%; }
+  .shop-controls .search-box { flex: 1; width: auto; min-width: 0; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 27px 12px; }
   .product-image { height: clamp(180px, 58vw, 300px); }
   .product-image-top { top: 10px; left: 10px; right: 10px; font-size: 7px; }

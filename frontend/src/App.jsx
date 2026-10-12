@@ -132,6 +132,7 @@ function App() {
 
   function addToCart(product) {
     setCart((current) => [...current, product])
+    setCartOpen(true)
     setNotice(`${product.name || 'Item'} added to your bag`)
     window.setTimeout(() => setNotice(''), 2400)
   }
@@ -142,120 +143,16 @@ function App() {
 
   return (
     <div className="app-shell">
-      <div className="announcement">
-        <span className="announcement-star">✳</span>
-        Thoughtful design. Everyday comfort. Made for your home.
-        <span className="announcement-star">✳</span>
-      </div>
-
-      <header className="site-header">
-        <a className="brand" href="#home" aria-label="FurniMart home">
-          <span className="brand-mark">f.</span>
-          <span>
-            furni<span className="brand-light">mart</span>
-          </span>
-        </a>
-
-        <nav className="main-nav" aria-label="Main navigation">
-          <a href="#shop">Shop all</a>
-          <a href="#story">Our philosophy</a>
-          <a href="#footer">Contact</a>
-        </nav>
-
-        <button className="cart-button" onClick={() => setCartOpen(true)}>
-          <span className="bag-icon" aria-hidden="true">♧</span>
-          <span>My bag</span>
-          <span className="cart-count">{cart.length}</span>
-        </button>
-      </header>
-
-      <main id="home">
-        <section className="hero" id="story">
-          <div className="hero-copy">
-            <div className="hero-kicker">
-              <span /> THE ART OF FEELING AT HOME
-            </div>
-
-            <h1>
-              Spaces that
-              <br />
-              tell your <em>story.</em>
-            </h1>
-
-            <p className="hero-description">
-              Furniture should do more than fill a room. It should make you
-              feel something. Discover thoughtful pieces for the life you love.
-            </p>
-
-            <div className="hero-actions">
-              <a className="primary-button" href="#shop">
-                Explore the collection <span>↗</span>
-              </a>
-              <a className="text-link" href="#shop">
-                Discover our pieces <span>↓</span>
-              </a>
-            </div>
-
-            <div className="hero-proof">
-              <div className="proof-avatars">
-                <span>F</span>
-                <span>H</span>
-                <span>+</span>
-              </div>
-              <p>
-                <strong>Made for real life</strong>
-                <br />
-                Designed with intention.
-              </p>
-            </div>
-          </div>
-
-          <div className="hero-visual" aria-label="Contemporary living room">
-            <img
-              className="hero-real-image"
-              src={furnitureImages.living}
-              alt="Contemporary living room furniture"
-              fetchPriority="high"
-            />
-
-            <div className="hero-visual-top">
-              <span>THE SLOW LIVING EDIT</span>
-              <span>No. 001</span>
-            </div>
-
-            <div className="hero-visual-bottom">
-              <span>Natural textures</span>
-              <span>Timeless silhouettes</span>
-            </div>
-
-            <div className="hero-stamp">
-              <span>LIVE</span>
-              <span>LOVELY</span>
-              <i>✳</i>
-            </div>
-          </div>
-
-          <div className="hero-bottom-note">
-            <span>01 / CONSIDERED LIVING</span>
-            <span>Good design, without the fuss ↓</span>
-          </div>
-        </section>
-
-        <section className="values-strip" aria-label="Our values">
-          <div><span className="value-symbol">✳</span><p>Thoughtful design</p></div>
-          <div><span className="value-symbol">◈</span><p>Everyday comfort</p></div>
-          <div><span className="value-symbol">⌂</span><p>Made for your space</p></div>
-          <div><span className="value-symbol">♡</span><p>Pieces to keep</p></div>
-        </section>
-
+      <main className="collection-page" id="home">
         <section className="shop-section" id="shop">
           <div className="section-heading">
-            <div>
+            <div className="title-stack">
               <p className="eyebrow">
-                <span className="heading-dash" /> A LITTLE SOMETHING FOR EVERY ROOM
+                <span className="heading-dash" />
+                A LITTLE SOMETHING FOR EVERY ROOM
               </p>
               <h2>
-                Find your <em>kind of comfort.</em>
+                Find your <em>kind</em> of comfort.
               </h2>
             </div>
 
@@ -279,25 +176,38 @@ function App() {
               ))}
             </div>
 
-            <label className="search-box">
-              <span aria-hidden="true">⌕</span>
-              <input
-                value={search}
-                onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search your next favourite..."
-                aria-label="Search products"
-              />
-              {search && (
-                <button
-                  type="button"
-                  onClick={() => setSearch('')}
-                  aria-label="Clear search"
-                >
-                  ×
-                </button>
-              )}
-            </label>
+            <div className="shop-controls">
+              <label className="search-box">
+                <span aria-hidden="true">⌕</span>
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Search your next favourite..."
+                  aria-label="Search products"
+                />
+                {search && (
+                  <button
+                    type="button"
+                    onClick={() => setSearch('')}
+                    aria-label="Clear search"
+                  >
+                    ×
+                  </button>
+                )}
+              </label>
+              <button
+                className="cart-button"
+                onClick={() => setCartOpen(true)}
+                aria-label={`Open bag, ${cart.length} items`}
+              >
+                <span className="bag-icon" aria-hidden="true">♧</span>
+                <span>My bag</span>
+                <span className="cart-count">{cart.length}</span>
+              </button>
+            </div>
           </div>
+
+          <div className="divider" aria-hidden="true" />
 
           {loading ? (
             <div className="status-panel">
@@ -344,10 +254,7 @@ function App() {
                       <span className="product-badge">A FAVOURITE</span>
                     )}
 
-                    <ProductImage
-                      product={product}
-                      index={index}
-                    />
+                    <ProductImage product={product} index={index} />
 
                     <button
                       className="quick-add"
@@ -389,73 +296,18 @@ function App() {
               <span>
                 SHOWING {visibleProducts.length} OF {products.length} PIECES
               </span>
-              <span>GOOD THINGS TAKE SHAPE HERE <i>✳</i></span>
+              <span>
+                GOOD THINGS TAKE SHAPE HERE <i>✳</i>
+              </span>
             </div>
           )}
         </section>
-
-        <section className="editorial-section">
-          <div className="editorial-art editorial-photo">
-            <img
-              src={furnitureImages.wooden}
-              alt="Natural wood furniture and warm interior details"
-              loading="lazy"
-            />
-            <span className="editorial-label">A QUIETER KIND OF LUXURY</span>
-          </div>
-
-          <div className="editorial-copy">
-            <p className="eyebrow">
-              <span className="heading-dash" /> OUR PHILOSOPHY
-            </p>
-            <h2>
-              Less, but
-              <br />
-              a whole lot <em>better.</em>
-            </h2>
-            <p>
-              We believe the best rooms aren't the ones that look perfect.
-              They're the ones that feel right. Warm materials, considered
-              forms, and room for the little moments that make life yours.
-            </p>
-            <a className="editorial-link" href="#shop">
-              Find pieces that feel like you <span>↗</span>
-            </a>
-          </div>
-        </section>
-
-        <section className="closing-banner">
-          <span className="closing-spark">✳</span>
-          <p className="eyebrow">YOUR HOME, YOUR STORY</p>
-          <h2>
-            Come on in.
-            <br />
-            <em>Make yourself at home.</em>
-          </h2>
-          <a className="closing-button" href="#shop">
-            Find your favourite piece <span>↗</span>
-          </a>
-          <span className="closing-caption">GOOD DESIGN. GOOD FEELINGS.</span>
-        </section>
       </main>
-
-      <footer id="footer">
-        <a className="brand footer-brand" href="#home">
-          <span className="brand-mark">f.</span>
-          <span>furni<span className="brand-light">mart</span></span>
-        </a>
-        <p>Furniture for the way you really live.</p>
-        <div className="footer-links">
-          <a href="#shop">Shop</a>
-          <a href="#story">Our story</a>
-          <a href="mailto:hello@furnimart.example">Get in touch</a>
-        </div>
-        <span>© {new Date().getFullYear()} FurniMart</span>
-      </footer>
 
       {notice && (
         <div className="notice-toast" role="status">
-          <span>✓</span>{notice}
+          <span>✓</span>
+          {notice}
         </div>
       )}
 
@@ -470,7 +322,9 @@ function App() {
             <div className="cart-drawer-header">
               <div>
                 <p className="eyebrow">THE GOOD STUFF</p>
-                <h2>Your bag <em>({cart.length})</em></h2>
+                <h2>
+                  Your bag <em>({cart.length})</em>
+                </h2>
               </div>
               <button
                 className="close-cart"

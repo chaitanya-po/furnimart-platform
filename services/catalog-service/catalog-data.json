@@ -1,0 +1,110 @@
+﻿[
+  {
+    "sku": "FM-SOF-001",
+    "name": "Solace Three-Seater Sofa",
+    "description": "A comfortable three-seater sofa with soft upholstery and a timeless silhouette for everyday living.",
+    "price": 32999,
+    "category": "Living Room",
+    "stock_quantity": 12,
+    "is_active": true
+  },
+  {
+    "sku": "FM-SOF-002",
+    "name": "Aria Compact Loveseat",
+    "description": "A space-saving two-seater designed for apartments, reading corners, and cosy evenings.",
+    "price": 21999,
+    "category": "Living Room",
+    "stock_quantity": 8,
+    "is_active": true
+  },
+  {
+    "sku": "FM-COF-001",
+    "name": "Mira Wooden Coffee Table",
+    "description": "A minimalist coffee table with a warm wood finish for books, coffee, and everyday essentials.",
+    "price": 6499,
+    "category": "Living Room",
+    "stock_quantity": 18,
+    "is_active": true
+  },
+  {
+    "sku": "FM-BED-001",
+    "name": "Haven Queen Bed",
+    "description": "A queen-size bed frame with a clean headboard design and sturdy construction.",
+    "price": 27999,
+    "category": "Bedroom",
+    "stock_quantity": 7,
+    "is_active": true
+  },
+  {
+    "sku": "FM-WAR-001",
+    "name": "Linea Two-Door Wardrobe",
+    "description": "A practical two-door wardrobe offering organised storage with a natural wood-inspired finish.",
+    "price": 18999,
+    "category": "Bedroom",
+    "stock_quantity": 9,
+    "is_active": true
+  },
+  {
+    "sku": "FM-BED-002",
+    "name": "Cloudside Bedside Table",
+    "description": "A compact bedside table with a drawer for keeping nighttime essentials close at hand.",
+    "price": 3999,
+    "category": "Bedroom",
+    "stock_quantity": 15,
+    "is_active": true
+  },
+  {
+    "sku": "FM-DIN-001",
+    "name": "Gather Four-Seater Dining Set",
+    "description": "A welcoming four-seater dining set designed for everyday meals and relaxed family gatherings.",
+    "price": 24999,
+    "category": "Dining",
+    "stock_quantity": 6,
+    "is_active": true
+  },
+  {
+    "sku": "FM-DIN-002",
+    "name": "Oakline Dining Table",
+    "description": "A versatile wooden dining table with a simple profile and a warm natural finish.",
+    "price": 12999,
+    "category": "Dining",
+    "stock_quantity": 10,
+    "is_active": true
+  },
+  {
+    "sku": "FM-OFF-001",
+    "name": "Focus Ergonomic Office Chair",
+    "description": "An adjustable office chair designed to support comfortable working sessions at home.",
+    "price": 8499,
+    "category": "Office",
+    "stock_quantity": 14,
+    "is_active": true
+  },
+  {
+    "sku": "FM-OFF-002",
+    "name": "Elevate Study Desk",
+    "description": "A functional study desk with a spacious work surface for a laptop, books, and accessories.",
+    "price": 9999,
+    "category": "Office",
+    "stock_quantity": 11,
+    "is_active": true
+  },
+  {
+    "sku": "FM-OFF-003",
+    "name": "Gridline Office Bookshelf",
+    "description": "A versatile bookshelf for organising work documents, books, and decorative objects.",
+    "price": 5999,
+    "category": "Office",
+    "stock_quantity": 13,
+    "is_active": true
+  },
+  {
+    "sku": "FM-LIV-004",
+    "name": "Luma Upholstered Accent Bench",
+    "description": "A versatile upholstered bench for an entryway, bedroom, or additional living-room seating.",
+    "price": 7499,
+    "category": "Living Room",
+    "stock_quantity": 8,
+    "is_active": true
+  }
+]
